@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://df1sm8jx6evf0"]
+
+[ext_resource type="PackedScene" uid="uid://b01payqnx1p6y" path="res://scenes/enemyScene.tscn" id="1_4ku2f"]
+[ext_resource type="Texture2D" uid="uid://db2s3uaynj641" path="res://Assents/background.jpg" id="1_jghxi"]
+[ext_resource type="PackedScene" uid="uid://cujgubr6wc3oh" path="res://scenes/playerScene.tscn" id="2_jghxi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ae82f"]
+size = Vector2(461.5, 647)
+
+[sub_resource type="Gradient" id="Gradient_jghxi"]
+offsets = PackedFloat32Array(0.7741935, 0.9569892, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.562724, 0.562724, 0.562724, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ae82f"]
+gradient = SubResource("Gradient_jghxi")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0.16239317, 0.22222222)
+
+[node name="TesteScene" type="Node2D" unique_id=1420789459]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=610897410]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1507121000]
+position = Vector2(527.25, 322.5)
+shape = SubResource("RectangleShape2D_ae82f")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=726735697]
+position = Vector2(150, 324)
+scale = Vector2(4.546875, 10.0859375)
+texture = SubResource("GradientTexture2D_ae82f")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1897082613]
+light_mask = 0
+visibility_layer = 524288
+position = Vector2(526, 323.00003)
+scale = Vector2(0.0914125, 0.18889707)
+texture = ExtResource("1_jghxi")
+
+[node name="Player" parent="." unique_id=685396020 instance=ExtResource("2_jghxi")]
+position = Vector2(512, 568)
+
+[node name="Enemy" parent="." unique_id=1748338500 instance=ExtResource("1_4ku2f")]
+position = Vector2(480, 44)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2029410964]
+position = Vector2(953.9288, 326.625)
+scale = Vector2(6.158477, 10.01172)
+texture = SubResource("GradientTexture2D_ae82f")

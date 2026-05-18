@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cujgubr6wc3oh"]
+
+[ext_resource type="Script" uid="uid://d35ymjly46ssq" path="res://scripts/player/player.cs" id="1_8rhwu"]
+[ext_resource type="Texture2D" uid="uid://lca5nbo67dx3" path="res://Assents/player/project.png" id="2_kykkm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c0ys"]
+size = Vector2(108, 84)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w2smf"]
+load_path = "res://.godot/imported/Baked_Potato_JE4_BE2.webp-85d743370d58a3affa83835ba8b934f7.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g1t4h"]
+height = 68.0
+
+[node name="Player" type="Node2D" unique_id=685396020]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1965667724]
+script = ExtResource("1_8rhwu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=2022296528]
+position = Vector2(-4, 13)
+shape = SubResource("RectangleShape2D_7c0ys")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1867645565]
+position = Vector2(-6.9999995, 5)
+scale = Vector2(0.3541667, 0.29965279)
+texture = SubResource("CompressedTexture2D_w2smf")
+
+[node name="projectile 1" type="Node2D" parent="." unique_id=628347001]
+
+[node name="Area2D" type="Area2D" parent="projectile 1" unique_id=1562668817]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectile 1/Area2D" unique_id=2013535707]
+position = Vector2(-35, -70)
+shape = SubResource("CapsuleShape2D_g1t4h")
+
+[node name="Sprite2D" type="Sprite2D" parent="projectile 1/Area2D/CollisionShape2D" unique_id=1744201532]
+position = Vector2(7.8086004, 4.2232523)
+rotation = -0.15358897
+scale = Vector2(0.28274179, 0.3014339)
+texture = ExtResource("2_kykkm")
+
+[node name="projectile 2" type="Node2D" parent="." unique_id=315137735]
+
+[node name="Area2D" type="Area2D" parent="projectile 2" unique_id=1126299622]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectile 2/Area2D" unique_id=1833491277]
+position = Vector2(20, -70)
+shape = SubResource("CapsuleShape2D_g1t4h")
+
+[node name="Sprite2D" type="Sprite2D" parent="projectile 2/Area2D/CollisionShape2D" unique_id=970601641]
+position = Vector2(8.973686, 5.203946)
+rotation = -0.15358897
+scale = Vector2(0.32345626, 0.29387018)
+texture = ExtResource("2_kykkm")
