@@ -77,11 +77,13 @@ script = ExtResource("3_jghxi")
 EnemyScene = ExtResource("1_4ku2f")
 MinX = 343.0
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=1575073912 node_paths=PackedStringArray("ScoreTable", "ScoreSound", "HighScoreSound")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1575073912 node_paths=PackedStringArray("ScoreTable", "LifeTable", "ScoreSound", "HighScoreSound", "player")]
 script = ExtResource("5_gxah6")
 ScoreTable = NodePath("ScoreTable")
+LifeTable = NodePath("LifeTable")
 ScoreSound = NodePath("Score")
 HighScoreSound = NodePath("HighScore")
+player = NodePath("../Player")
 
 [node name="ScoreTable" type="Label" parent="UI" unique_id=1064842575]
 anchors_preset = -1
@@ -101,6 +103,17 @@ volume_db = -23.065
 [node name="HighScore" type="AudioStreamPlayer2D" parent="UI" unique_id=2048561534]
 stream = ExtResource("5_idp3d")
 volume_db = -23.645
+
+[node name="LifeTable" type="Label" parent="UI" unique_id=1714979870]
+anchors_preset = -1
+anchor_left = 0.71300006
+anchor_top = 0.81200004
+anchor_right = 0.80700004
+anchor_bottom = 0.897
+offset_left = -0.37609863
+offset_top = -0.17602539
+offset_right = 0.3359375
+offset_bottom = -0.25598145
 
 [node name="SoundTrack" type="AudioStreamPlayer" parent="." unique_id=1990198185]
 stream = ExtResource("6_iqq0t")

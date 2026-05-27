@@ -4,11 +4,14 @@ using System;
 public partial class ScoreManager : Node
 {
     [Export] public Label ScoreTable { get; set; }
+    [Export] public Label LifeTable { get; set; }
     [Export] public AudioStreamPlayer2D ScoreSound { get;set;}
     [Export] public AudioStreamPlayer2D HighScoreSound { get;set;}
+    [Export] public Player player;
     
 
     private int count = 0;
+    private int life;
 
     private static int score = 0;
     private static int highScore = 0;
@@ -18,12 +21,17 @@ public partial class ScoreManager : Node
 
     public override void _Ready()
     {
-        LoadHighScore();
         instance = this;
+
+        if (player != null)
+        {
+            life = player.health; 
+        }
+        LoadHighScore();
         UpdateScoreUI();
+        UpdateLifeUI();
     }
 
-    // Função estática para que qualquer script (como o Enemy) possa dar pontos facilmente
     public static void AddPoints(int pointsToAdd)
     {
         GD.Print($"mais {pointsToAdd}");
@@ -47,6 +55,19 @@ public partial class ScoreManager : Node
             ScoreTable.Text = $"Score: {score} | HighScore: {highScore}";
         }
     }
+    
+    public static void UpdateLifeUI()
+    {
+        if (instance != null && instance.LifeTable != null)
+        {
+            if (instance.player != null)
+            {
+                instance.life = instance.player.health; // Puxa a vida atual do Player
+            }
+            instance.LifeTable.Text = $"Life: {instance.life}";
+        }
+    }
+
 
     // Chame isso quando o jogador morrer e o jogo reiniciar
     public static void ResetPoints()

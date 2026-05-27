@@ -4,7 +4,7 @@ using System;
 public partial class Player : CharacterBody2D
 {
 
-	[Export] private int health = 4;
+	[Export] public int health = 4;
 	[Export] private float speed = 350f;
 	[Export] public CollisionShape2D collider;
 	[Export] public Node2D marker;
@@ -73,6 +73,7 @@ public partial class Player : CharacterBody2D
 	{
 		health--;
 		DeadSound.Play();
+		ScoreManager.UpdateLifeUI();
 		if (health <= 0)
 		{
 			ScoreManager.ResetPoints();
