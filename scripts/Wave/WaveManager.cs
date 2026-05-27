@@ -7,12 +7,12 @@ public partial class WaveManager : Node
     
     // Defina os limites horizontais baseados na largura da sua imagem do planeta
     [Export] public float MinX { get; set; }  = 356.0f;
-    [Export] public float MaxX { get; set; } = 697.0f;
+    [Export] public float MaxX { get; set; } = 680.0f;
     [Export] private float spawnY {get;set;} = -62f;
 
     private int currentWave = 0;
     private float waveTimer = 0f;
-    private float timeBetweenWaves = 10f; // Nova horda a cada 10 segundos
+    private float timeBetweenWaves = 6f; // Nova horda a cada 6 segundos
 
     public override void _Ready()
     {
@@ -35,7 +35,7 @@ public partial class WaveManager : Node
         GD.Print($"--- Iniciando Horda {currentWave}! ---");
 
         // Define quantos inimigos vão surgir (aumenta a cada horda)
-        int enemiesToSpawn = 3 + currentWave; 
+        int enemiesToSpawn = 4 + currentWave; 
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {

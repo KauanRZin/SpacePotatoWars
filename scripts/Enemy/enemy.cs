@@ -2,18 +2,18 @@ using Godot;
 using System;
 
 public partial class Enemy : CharacterBody2D
-{
+{   
+    [Export] private int point {get;private set;} = 0
+    [Export] public int life = 2;
 	[Export] public float Speed { get; set; } = 150f;
-    [Export] public PackedScene EnemyProjectileScene { get; set; }
 	[Export] private Node2D marker;
 	[Export] public PackedScene ProjectileScene { get; set; }
 
 
 	private float shootTimer = 0f;
-    private float shootInterval = 2.0f; // Atira a cada 2 segundos
+    private float shootInterval = 3.0f; 
     private int currentWave = 1;
     private float timeActive = 0f;
-
 
 	private float targetYPosition = 150f;
 
@@ -51,28 +51,35 @@ public partial class Enemy : CharacterBody2D
         if (shootTimer >= shootInterval)
         {
             shootTimer = 0f;
+
+            GD.Print($"BANG");
             EnemyShoot();
         }
 	}
 
 	private void EnemyShoot()
     {
-        if (ProjectileScene == null) return;
+        GD.Print($"BANG!!!!");
 
-        Projectile projectile = ProjectileScene.Instantiate<Projectile>();
+        if (ProjectileScene == null) 
+            return;
+        
+        Projectile projectile = ProjectileScene.Instantiate<ProjectileEnemy>();
         
         // Posiciona o projétil no inimigo
-        projectile.GlobalTransform = marker.GlobalTransform;
-        // Rotaciona o projétil para baixo (180 graus ou PI radianos) para ele ir na direção do Player
-        projectile.GlobalRotation = Mathf.Pi; 
-        GetParent().CallDeferred(Node.MethodName.AddChild, projectile);
+        projectile.GlobalPosition = marker.GlobalPosition;
+        GetParent().AddChild(projectile);
     }
 
 	 // Método para ser chamado quando o tiro do player atingir este inimigo
     public void TakeDamage()
     {
-        QueueFree(); // Destrói o inimigo
-    }
+        life--;
+        if(life <= 0){
 
+            QueueFree();
+        }
+    }
+    
 	 
 }

@@ -5,10 +5,12 @@ public partial class Player : CharacterBody2D
 {
 
 	[Export] private int health = 3;
-	[Export] private float speed = 300f;
+	[Export] private float speed = 350f;
 	[Export] public CollisionShape2D collider;
 	[Export] public Node2D marker;
 	[Export] public PackedScene ProjectileScene { get; set; }
+
+
 
 	
 	//public points points;
@@ -56,8 +58,8 @@ public partial class Player : CharacterBody2D
 	public void Shoot()
 	{
 		Projectile projectile = ProjectileScene.Instantiate<Projectile>(); 
-		projectile.GlobalTransform = marker.GlobalTransform;
-    	GetParent().CallDeferred(Node.MethodName.AddChild, projectile);
+		projectile.GlobalPosition = marker.GlobalPosition;
+    	GetParent().AddChild(projectile);
 	}
 
 
@@ -67,7 +69,7 @@ public partial class Player : CharacterBody2D
 		if (health <= 0)
 		{
 			//points.ResetPoints();
-			GetTree().ReloadCurrentScene();
+			GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
 		}
 	}
 

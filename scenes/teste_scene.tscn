@@ -26,7 +26,7 @@ scale = Vector2(0.0914125, 0.18889707)
 texture = ExtResource("1_jghxi")
 
 [node name="Player" parent="." unique_id=685396020 instance=ExtResource("2_jghxi")]
-position = Vector2(495, 546)
+position = Vector2(511, 585)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2029410964]
 modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
@@ -41,13 +41,15 @@ scale = Vector2(4.6328115, 10.21875)
 texture = SubResource("GradientTexture2D_ae82f")
 
 [node name="sceneLimits" type="StaticBody2D" parent="." unique_id=1779665012]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sceneLimits" unique_id=45330180]
-position = Vector2(174, 321)
+position = Vector2(166, 323)
 shape = SubResource("RectangleShape2D_4ku2f")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="sceneLimits" unique_id=273361558]
-position = Vector2(880, 324.5)
+position = Vector2(893, 325)
 shape = SubResource("RectangleShape2D_4ku2f")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1295338376]
@@ -64,4 +66,4 @@ shape = SubResource("SegmentShape2D_4ku2f")
 [node name="WaveManager" type="Node" parent="." unique_id=819121244]
 script = ExtResource("3_jghxi")
 EnemyScene = ExtResource("1_4ku2f")
-MaxX = 680.0
+MinX = 343.0

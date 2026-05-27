@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c1r0k2annjc2x"]
+
+[ext_resource type="Texture2D" uid="uid://lca5nbo67dx3" path="res://Assents/player/project.png" id="2_35mro"]
+[ext_resource type="Script" uid="uid://c3owb3e1e0mft" path="res://scripts/projectile/ProjectileEnemy.cs" id="2_qmqis"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qmqis"]
+radius = 3.0
+height = 34.0
+
+[node name="Area2D" type="Area2D" unique_id=611530782]
+script = ExtResource("2_qmqis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2046858704]
+position = Vector2(-4, 2)
+shape = SubResource("CapsuleShape2D_qmqis")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1427624751]
+position = Vector2(-2, 5)
+scale = Vector2(0.102053165, 0.14364034)
+texture = ExtResource("2_35mro")

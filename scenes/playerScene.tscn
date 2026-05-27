@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c1wawfdwh10gv" path="res://scenes/projectileScene.tscn" id="2_gyu2u"]
 [ext_resource type="Texture2D" uid="uid://cnqwu4jb6najj" path="res://Assents/player/player.webp" id="2_x1fr4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c0ys"]
-size = Vector2(108, 84)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gyu2u"]
+radius = 41.048748
 
 [node name="Player" type="CharacterBody2D" unique_id=1441022077 node_paths=PackedStringArray("collider", "marker")]
 script = ExtResource("1_x1fr4")
@@ -14,13 +14,13 @@ marker = NodePath("Marker2D")
 ProjectileScene = ExtResource("2_gyu2u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2022296528]
-position = Vector2(1.0000005, 11)
+position = Vector2(-1, 3)
 scale = Vector2(1.0000001, 1)
-shape = SubResource("RectangleShape2D_7c0ys")
+shape = SubResource("CircleShape2D_gyu2u")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1867645565]
-position = Vector2(-5, 7.0000005)
-scale = Vector2(0.3541667, 0.29965279)
+position = Vector2(-2.0000005, -1)
+scale = Vector2(0.26319447, 0.19982637)
 texture = ExtResource("2_x1fr4")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1990385155]

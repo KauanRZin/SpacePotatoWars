@@ -2,18 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://dnk166th8rg" path="res://Assents/enemy/enemy.webp" id="1_m66mo"]
 [ext_resource type="Script" uid="uid://clhvyqwwbwk0e" path="res://scripts/Enemy/Enemy.cs" id="1_ok6wo"]
+[ext_resource type="PackedScene" uid="uid://c1r0k2annjc2x" path="res://scenes/projectileEnemy.tscn" id="2_w1nh2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
-size = Vector2(101, 81)
+[sub_resource type="CircleShape2D" id="CircleShape2D_w1nh2"]
+radius = 43.104523
 
-[node name="Enemy" type="CharacterBody2D" unique_id=489083049]
+[node name="Enemy" type="CharacterBody2D" unique_id=489083049 node_paths=PackedStringArray("marker")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_ok6wo")
+marker = NodePath("Marker2D")
+ProjectileScene = ExtResource("2_w1nh2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1540952400]
 position = Vector2(1, -1)
-shape = SubResource("RectangleShape2D_md0e3")
+shape = SubResource("CircleShape2D_w1nh2")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=1951345222]
 position = Vector2(1.4999981, -1.5)
@@ -21,4 +24,4 @@ scale = Vector2(0.33333334, 0.29444444)
 texture = ExtResource("1_m66mo")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=2145088683]
-position = Vector2(0, 61)
+position = Vector2(-1, 110)
