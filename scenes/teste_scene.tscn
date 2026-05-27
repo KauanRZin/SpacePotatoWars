@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://db2s3uaynj641" path="res://Assents/background.jpg" id="1_jghxi"]
 [ext_resource type="PackedScene" uid="uid://cujgubr6wc3oh" path="res://scenes/playerScene.tscn" id="2_jghxi"]
 [ext_resource type="Script" uid="uid://ygl6mvxh1d3q" path="res://scripts/Wave/WaveManager.cs" id="3_jghxi"]
+[ext_resource type="Script" uid="uid://cw7bkkjcgp6s2" path="res://scripts/ScoreManager.cs" id="5_gxah6"]
+[ext_resource type="AudioStream" uid="uid://bjmx8thw7fx70" path="res://Assents/audio/Highscore.mp3" id="5_idp3d"]
+[ext_resource type="AudioStream" uid="uid://b4w66abmmn2vr" path="res://Assents/audio/Soubdtrack.mp3" id="6_iqq0t"]
+[ext_resource type="AudioStream" uid="uid://ccx6rkbc3h82a" path="res://Assents/audio/Score.mp3" id="6_jww2t"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ae82f"]
 fill_from = Vector2(1, 0)
@@ -18,15 +22,20 @@ b = Vector2(244, 693)
 
 [node name="TesteScene" type="Node2D" unique_id=1420789459]
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1897082613]
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=883674088]
+repeat_size = Vector2(1, 1)
+autoscroll = Vector2(0.2, 0)
+repeat_times = 3
+
+[node name="Background" type="Sprite2D" parent="Parallax2D" unique_id=1897082613]
 light_mask = 0
 visibility_layer = 524288
-position = Vector2(526, 325)
-scale = Vector2(0.0914125, 0.18889707)
+position = Vector2(526.2344, 323.4375)
+scale = Vector2(0.09190624, 0.1909191)
 texture = ExtResource("1_jghxi")
 
 [node name="Player" parent="." unique_id=685396020 instance=ExtResource("2_jghxi")]
-position = Vector2(511, 585)
+position = Vector2(520, 594)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2029410964]
 modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
@@ -67,3 +76,34 @@ shape = SubResource("SegmentShape2D_4ku2f")
 script = ExtResource("3_jghxi")
 EnemyScene = ExtResource("1_4ku2f")
 MinX = 343.0
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1575073912 node_paths=PackedStringArray("ScoreTable", "ScoreSound", "HighScoreSound")]
+script = ExtResource("5_gxah6")
+ScoreTable = NodePath("ScoreTable")
+ScoreSound = NodePath("Score")
+HighScoreSound = NodePath("HighScore")
+
+[node name="ScoreTable" type="Label" parent="UI" unique_id=1064842575]
+anchors_preset = -1
+anchor_left = 0.053000003
+anchor_top = 0.813
+anchor_right = 0.157
+anchor_bottom = 0.887
+offset_left = -1.0560036
+offset_top = 0.17596436
+offset_right = 0.13598633
+offset_bottom = 0.22399902
+
+[node name="Score" type="AudioStreamPlayer2D" parent="UI" unique_id=1790196945]
+stream = ExtResource("6_jww2t")
+volume_db = -23.065
+
+[node name="HighScore" type="AudioStreamPlayer2D" parent="UI" unique_id=2048561534]
+stream = ExtResource("5_idp3d")
+volume_db = -23.645
+
+[node name="SoundTrack" type="AudioStreamPlayer" parent="." unique_id=1990198185]
+stream = ExtResource("6_iqq0t")
+volume_db = -20.481
+autoplay = true
+parameters/looping = true

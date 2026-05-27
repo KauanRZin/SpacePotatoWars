@@ -3,11 +3,12 @@ using System;
 
 public partial class Enemy : CharacterBody2D
 {   
-    [Export] private int point {get;private set;} = 0
     [Export] public int life = 2;
 	[Export] public float Speed { get; set; } = 150f;
 	[Export] private Node2D marker;
 	[Export] public PackedScene ProjectileScene { get; set; }
+    [Export] public AudioStreamPlayer2D ShootSound {get;set;}
+    [Export] public AudioStreamPlayer2D DeadSound {get;set;}
 
 
 	private float shootTimer = 0f;
@@ -65,7 +66,7 @@ public partial class Enemy : CharacterBody2D
             return;
         
         Projectile projectile = ProjectileScene.Instantiate<ProjectileEnemy>();
-        
+        ShootSound.Play();
         // Posiciona o projétil no inimigo
         projectile.GlobalPosition = marker.GlobalPosition;
         GetParent().AddChild(projectile);
@@ -75,11 +76,10 @@ public partial class Enemy : CharacterBody2D
     public void TakeDamage()
     {
         life--;
+        DeadSound.Play();
         if(life <= 0){
-
+            ScoreManager.AddPoints(10); 
             QueueFree();
         }
-    }
-    
-	 
+    } 
 }

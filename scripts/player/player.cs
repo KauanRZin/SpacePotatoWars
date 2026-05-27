@@ -4,11 +4,13 @@ using System;
 public partial class Player : CharacterBody2D
 {
 
-	[Export] private int health = 3;
+	[Export] private int health = 4;
 	[Export] private float speed = 350f;
 	[Export] public CollisionShape2D collider;
 	[Export] public Node2D marker;
 	[Export] public PackedScene ProjectileScene { get; set; }
+	[Export] public AudioStreamPlayer2D ShootSound { get;set;}
+	[Export] public AudioStreamPlayer2D DeadSound { get;set;}
 
 
 
@@ -60,16 +62,21 @@ public partial class Player : CharacterBody2D
 		Projectile projectile = ProjectileScene.Instantiate<Projectile>(); 
 		projectile.GlobalPosition = marker.GlobalPosition;
     	GetParent().AddChild(projectile);
+		if (ShootSound != null)
+		{
+			ShootSound.Play(); // Dá o play no efeito sonoro
+		}
 	}
 
 
 	public void TakeDamage()
 	{
 		health--;
+		DeadSound.Play();
 		if (health <= 0)
 		{
-			//points.ResetPoints();
-			GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
+			ScoreManager.ResetPoints();
+			GetTree().Quit(); 
 		}
 	}
 

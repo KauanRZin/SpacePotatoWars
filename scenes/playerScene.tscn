@@ -3,15 +3,19 @@
 [ext_resource type="Script" uid="uid://dtrwqjvrws5qm" path="res://scripts/player/Player.cs" id="1_x1fr4"]
 [ext_resource type="PackedScene" uid="uid://c1wawfdwh10gv" path="res://scenes/projectileScene.tscn" id="2_gyu2u"]
 [ext_resource type="Texture2D" uid="uid://cnqwu4jb6najj" path="res://Assents/player/player.webp" id="2_x1fr4"]
+[ext_resource type="AudioStream" uid="uid://qw7mpnaujb5p" path="res://Assents/audio/Piu.mp3" id="4_smhll"]
+[ext_resource type="AudioStream" uid="uid://bj667e3rpcw53" path="res://Assents/audio/Morreu player.mp3" id="5_a2p6p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gyu2u"]
 radius = 41.048748
 
-[node name="Player" type="CharacterBody2D" unique_id=1441022077 node_paths=PackedStringArray("collider", "marker")]
+[node name="Player" type="CharacterBody2D" unique_id=1441022077 node_paths=PackedStringArray("collider", "marker", "ShootSound", "DeadSound")]
 script = ExtResource("1_x1fr4")
 collider = NodePath("CollisionShape2D")
 marker = NodePath("Marker2D")
 ProjectileScene = ExtResource("2_gyu2u")
+ShootSound = NodePath("shootSound")
+DeadSound = NodePath("deadSound")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2022296528]
 position = Vector2(-1, 3)
@@ -25,3 +29,11 @@ texture = ExtResource("2_x1fr4")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1990385155]
 position = Vector2(1, -54)
+
+[node name="shootSound" type="AudioStreamPlayer2D" parent="." unique_id=837874745]
+stream = ExtResource("4_smhll")
+volume_db = -15.95
+
+[node name="deadSound" type="AudioStreamPlayer2D" parent="." unique_id=1539924201]
+stream = ExtResource("5_a2p6p")
+volume_db = -21.243

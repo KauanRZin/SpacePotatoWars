@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bj667e3rpcw53"
+path="res://.godot/imported/Morreu player.mp3-7f9edf13ed32dfb6498444ecbbf03596.mp3str"
+
+[deps]
+
+source_file="res://Assents/audio/Morreu player.mp3"
+dest_files=["res://.godot/imported/Morreu player.mp3-7f9edf13ed32dfb6498444ecbbf03596.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
